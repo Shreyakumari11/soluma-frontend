@@ -1,0 +1,275 @@
+/* Master Structural Variables & Reset Rulesets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar Components Layout */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 6%;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.brand-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #e67e22;
+    letter-spacing: -0.5px;
+}
+
+.nav-center {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 0;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #0f172a;
+    border-bottom: 2px solid #e67e22;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.global-metric {
+    background: #fff7ed;
+    border: 1px solid #ffedd5;
+    color: #ea580c;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.btn-login {
+    background: none;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-signup {
+    background: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Home Page Banner Frame (Reflecting SOLUMA's AI Soul) */
+.hero-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 85vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(244, 246, 249, 0.92)), 
+                url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.8rem;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: #475569;
+    margin-bottom: 2.2rem;
+}
+
+.btn-start {
+    background: #f5b041;
+    color: #1e293b;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(245, 176, 65, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-start:hover {
+    background: #e67e22;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Common Sub-view Workspace Frameworks */
+.container-fluid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.max-w-4xl { max-w: 850px; }
+.max-w-xl { max-w: 550px; }
+
+.section-header { margin-bottom: 2.5rem; }
+.section-header h2 { font-size: 1.8rem; font-weight: 800; }
+.section-header p { color: #64748b; margin-top: 0.4rem; }
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.course-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 1.8rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 4px;
+}
+.badge.live { background: #fee2e2; color: #ef4444; }
+.badge.self-paced { background: #e0f2fe; color: #0284c7; }
+
+.btn-action {
+    background: #f1f5f9;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+/* AI Workspace Box Layout Models */
+.ai-workspace {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-window {
+    flex: 1;
+    background: #f8fafc;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ai-bubble, .user-bubble {
+    padding: 12px 16px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.ai-bubble { background: white; border: 1px solid #e2e8f0; align-self: flex-start; }
+.user-bubble { background: #e67e22; color: white; align-self: flex-end; }
+
+.input-row { display: flex; padding: 1rem; border-top: 1px solid #e2e8f0; gap: 10px; }
+.input-row input { flex: 1; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; }
+
+/* Verification Layer System Styles */
+.proctor-panel {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+}
+.proctor-alert-box {
+    background: #fff8e1;
+    border-left: 4px solid #f5b041;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+/* Skill Passport Graphic Card Modules */
+.passport-frame {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 2.2rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(15,23,42,0.15);
+}
+.passport-header { display: flex; justify-content: space-between; margin-bottom: 2rem; }
+.passport-subtitle { color: #f5b041; font-size: 0.75rem; font-weight: 700; display: block; margin-top: 2px; }
+.xp-pill { background: rgba(255,255,255,0.08); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+.metric-row { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.metric-box { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid #334155; padding: 1rem; border-radius: 8px; }
+.metric-box .label { display: block; font-size: 0.7 its; color: #94a3b8; margin-bottom: 4px; }
+.metric-box .value { font-size: 1.4rem; font-weight: 700; }
+.text-emerald { color: #34d399; }
+.text-gold { color: #f5b041; }
+.skills-list h4 { font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem; text-transform: uppercase; }
+.skill-tag-item { margin-bottom: 1rem; }
+.skill-tag-item span { display: block; font-size: 0.85rem; margin-bottom: 5px; }
+.progress-bar { width: 100%; height: 5px; background: #334155; border-radius: 4px; overflow: hidden; }
+.progress { height: 100%; background: #e67e22; }
