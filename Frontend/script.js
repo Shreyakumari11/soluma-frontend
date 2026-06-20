@@ -2,6 +2,20 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Global System Engine Thread: Active.");
+    // 🤖 AI Intelligence Core Logic
+    const userInput = document.querySelector('.input-row input');
+    const executeBtn = document.querySelector('.input-row button');
+
+    if (executeBtn && userInput) {
+        executeBtn.addEventListener('click', () => {
+            const messageText = userInput.value; 
+            if (messageText.trim() !== "") {
+                console.log("User prompt:", messageText);
+                alert("Prompt executed: " + messageText); // Yeh check karne ke liye ki kaam kar raha hai
+                userInput.value = ""; // Input box ko khali karne ke liye
+            }
+        });
+    }
 
     // Event Delegation for dynamically appended buttons across asynchronous nodes
     document.body.addEventListener("click", (event) => {

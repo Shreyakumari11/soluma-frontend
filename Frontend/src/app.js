@@ -41,7 +41,8 @@ class SolumaRuntimeEngine {
         if(xpElement) xpElement.textContent = this.globalState.userXP;
     }
 
-    handleAiInference() {
+    // Backend connecting update
+    async handleAiInference() {
         const queryBox = document.getElementById('ai-prompt-input');
         const displayLogs = document.getElementById('chat-logs');
         if(!queryBox || !queryBox.value.trim()) return;
@@ -52,21 +53,33 @@ class SolumaRuntimeEngine {
         userPromptBubble.textContent = queryBox.value;
         displayLogs.appendChild(userPromptBubble);
 
-        // AI Agent Evaluation Response Block
+        // AI Agent Evaluation Response Block (Loading status)
         const aiProcessingBubble = document.createElement('div');
         aiProcessingBubble.className = 'ai-bubble';
-        aiProcessingBubble.textContent = "SOLUMA Core Intelligence compiling dynamic responses, evaluating skill mapping vectors and updating Skill Passport schema logs...";
+        aiProcessingBubble.textContent = "SOLUMA Core Intelligence connecting to backend...";
         displayLogs.appendChild(aiProcessingBubble);
 
         queryBox.value = '';
         displayLogs.scrollTop = displayLogs.scrollHeight;
 
-        setTimeout(() => {
-            aiProcessingBubble.textContent = "AI Pipeline Complete! Generated structured revision summaries and matching knowledge maps. 10 XP points applied securely to your dynamic identity footprint.";
+        try {
+            // 🔄 Real Backend API Call
+            const response = await fetch('http://localhost:5000/');
+            const data = await response.text();
+
+            // 💬 Server ka message screen par set karna
+            aiProcessingBubble.textContent = data;
+            
+            // XP Status Update
             this.globalState.userXP += 10;
             this.syncStateDisplays();
-            displayLogs.scrollTop = displayLogs.scrollHeight;
-        }, 1500);
+            
+        } catch (error) {
+            console.error("Backend connection error:", error);
+            aiProcessingBubble.textContent = "Error: Backend server se connect nahi ho paya.";
+        }
+
+        displayLogs.scrollTop = displayLogs.scrollHeight;
     }
 
     simulateProctorTrigger() {
