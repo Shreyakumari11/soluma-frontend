@@ -39,6 +39,8 @@ body {
     object-fit: contain;
     border-radius: 6px;
     display: inline-block;
+    /* Logo ka piche koi background na dikhe isliye */
+    background: transparent; 
 }
 
 .brand-name {
@@ -111,8 +113,9 @@ body {
     align-items: center;
     text-align: center;
     min-height: 85vh;
-    background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(244, 246, 249, 0.92)), 
-                url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+    /* Nayi classroom image ke upar dark overlay taaki text pop-out ho */
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
+                url('images/classroom-bg.jpg') no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
     padding: 2rem;
@@ -121,14 +124,14 @@ body {
 .hero-content h1 {
     font-size: 3.6rem;
     font-weight: 800;
-    color: #0f172a;
+    color: #ffffff; /* Naye background par heading ko white kiya */
     margin-bottom: 0.8rem;
     letter-spacing: -1px;
 }
 
 .hero-content p {
     font-size: 1.3rem;
-    color: #475569;
+    color: #cbd5e1; /* Subtitle ko soft grey kiya padhne ke liye */
     margin-bottom: 2.2rem;
 }
 
@@ -264,7 +267,7 @@ body {
 .xp-pill { background: rgba(255,255,255,0.08); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 .metric-row { display: flex; gap: 1rem; margin-bottom: 2rem; }
 .metric-box { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid #334155; padding: 1rem; border-radius: 8px; }
-.metric-box .label { display: block; font-size: 0.7 its; color: #94a3b8; margin-bottom: 4px; }
+.metric-box .label { display: block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; }
 .metric-box .value { font-size: 1.4rem; font-weight: 700; }
 .text-emerald { color: #34d399; }
 .text-gold { color: #f5b041; }
