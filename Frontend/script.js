@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Global System Engine Thread: Active.");
 
-    // 🤖 AI Intelligence Core Logic
     const userInput = document.querySelector('.input-row input');
     const executeBtn = document.querySelector('.input-row button');
 
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("AI process kar raha hai, kripya pratiksha karein...");
 
             try {
-                // Backend ko request bhej rahe hain
+                // YE HAI FINAL CORRECT URL AUR STRUCTURE
                 const response = await fetch('https://soluma-backend-project.onrender.com/api/ask', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -37,17 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             userInput.value = ""; // Input box khali karein
-        });                                                                                                                                                                                                                           
-    }                                                                                                                                                                                                                                                                                                                                    
+        });
+    }
 
-    // Event Delegation (Login button)
+    // Event Delegation
     document.body.addEventListener("click", (event) => {
         if (event.target.classList.contains("btn-login")) {
             console.log("Login clicked");
         }
     });
 
-    // Real-time window scrolling aesthetic mutation listener
+    // Window scrolling effect
     window.addEventListener("scroll", () => {
         const headerContainer = document.querySelector(".navbar");
         if (headerContainer) {
