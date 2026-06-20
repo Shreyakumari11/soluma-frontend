@@ -1,26 +1,49 @@
-// Frontend/script.js
-
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Global System Engine Thread: Active.");
+
     // 🤖 AI Intelligence Core Logic
     const userInput = document.querySelector('.input-row input');
     const executeBtn = document.querySelector('.input-row button');
 
     if (executeBtn && userInput) {
-        executeBtn.addEventListener('click', () => {
+        executeBtn.addEventListener('click', async () => {
             const messageText = userInput.value; 
-            if (messageText.trim() !== "") {
-                console.log("User prompt:", messageText);
-                alert("Prompt executed: " + messageText); // Yeh check karne ke liye ki kaam kar raha hai
-                userInput.value = ""; // Input box ko khali karne ke liye
-            }
-        });
-    }
+            if (messageText.trim() === "") return;
 
-    // Event Delegation for dynamically appended buttons across asynchronous nodes
+            console.log("User prompt:", messageText);
+            
+            // User ko feedback dena
+            alert("AI process kar raha hai, kripya pratiksha karein...");
+
+            try {
+                // Backend ko request bhej rahe hain
+                const response = await fetch('https://soluma-backend.onrender.com/api/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: messageText })
+                });
+
+                const data = await response.json();
+                
+                // AI ka jawab screen par dikhayein
+                if (data.answer) {
+                    alert("AI Jawab: " + data.answer);
+                } else {
+                    alert("Error: AI ne koi jawab nahi diya.");
+                }
+            } catch (error) {
+                console.error("Connection Error:", error);
+                alert("Error: Backend se connect nahi ho pa raha. Check karein ki Render live hai ya nahi.");
+            }
+
+            userInput.value = ""; // Input box khali karein
+        });                                                                                                                                                                                                                           
+    }                                                                                                                                                                                                                                                                                                                                    
+
+    // Event Delegation (Login button)
     document.body.addEventListener("click", (event) => {
         if (event.target.classList.contains("btn-login")) {
-            alert("SOLUMA Dynamic Identity Framework is active. Database access endpoint connection loading...");
+            console.log("Login clicked");
         }
     });
 
