@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 // Backend ko request bhej rahe hain
-                const response = await fetch('https://soluma-backend.onrender.com/api/ask', {
+                const response = await fetch('https://soluma-backend-project.onrender.com', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ question: messageText })
