@@ -1,19 +1,28 @@
 const express = require('express');
-const cors = require('cors'); 
+const cors = require('cors');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-// Middleware setup
-app.use(cors()); 
+// API Key (Render ke Environment Variable mein 'GEMINI_API_KEY' set karein)
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+app.use(cors());
 app.use(express.json());
 
-// Main Route
-app.get('/', (req, res) => {
-    res.send('SOLUMA Backend Server is running successfully with CORS!');
+// AI se baat karne ka route
+app.post('/api/ask', async (req, res) => {
+    try {
+        const { question } = req.body;
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const result = await model.generateContent(question);
+        const response = await result.response;
+        res.json({ answer: response.text() });
+    } catch (error) {
+        console.error("AI Error:", error);
+        res.status(500).json({ error: "AI response failed" });
+    }
 });
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
