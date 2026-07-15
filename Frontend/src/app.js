@@ -64,7 +64,7 @@ class SolumaRuntimeEngine {
 
         try {
             // 🔄 Real Backend API Call (Updated)
-            const response = await fetch('https://soluma-backend.onrender.com/api/chat', {
+            const response = await fetch('https://soluma-backend-project.onrender.com/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt: userPromptBubble.textContent })
