@@ -63,12 +63,18 @@ class SolumaRuntimeEngine {
         displayLogs.scrollTop = displayLogs.scrollHeight;
 
         try {
-            // 🔄 Real Backend API Call
-            const response = await fetch('https://soluma-backend.onrender.com');
-            const data = await response.text();
-
+            // 🔄 Real Backend API Call (Updated)
+            const response = await fetch('https://soluma-backend.onrender.com/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: userPromptBubble.textContent })
+            });
+            const data = await response.json();
+            
             // 💬 Server ka message screen par set karna
-            aiProcessingBubble.textContent = data;
+            aiProcessingBubble.textContent = data.response;
+
+            
             
             // XP Status Update
             this.globalState.userXP += 10;
