@@ -53,7 +53,7 @@ class SolumaRuntimeEngine {
         userPromptBubble.textContent = queryBox.value;
         displayLogs.appendChild(userPromptBubble);
 
-        // AI Agent Evaluation Response Block (Loading status)
+        // AI Agent Evaluation Response Block (Loading status)txt change
         const aiProcessingBubble = document.createElement('div');
         aiProcessingBubble.className = 'ai-bubble';
         aiProcessingBubble.textContent = "SOLUMA Core Intelligence connecting to backend...";
