@@ -309,4 +309,6 @@ class Router {
     }
 }
 
-new Router();
+
+const routerInstance = new Router();
+window.router = routerInstance; // Ye line aapke router ko global bana degi
