@@ -20,8 +20,8 @@ app.post('/api/ask', async (req, res) => {
         const response = await result.response;
         res.json({ answer: response.text() });
     } catch (error) {
-        console.error("AI Error:", error);
-        res.status(500).json({ error: "AI response failed" });
+        console.error("DEBUG ERROR:", error);
+        res.status(500).json({ error: "AI response failed", details: error.message });
     }
 });
 
