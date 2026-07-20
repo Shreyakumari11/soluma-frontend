@@ -64,15 +64,19 @@ class SolumaRuntimeEngine {
 
         try {
             // 🔄 Real Backend API Call (Updated)
+<<<<<<< HEAD
             const response = await fetch('https://soluma-backend-project.onrender.com/api/chat', {
+=======
+            const response = await fetch('https://soluma-backend.onrender.com/api/ask', {
+>>>>>>> dbd3d66 (Fixed API endpoint to /api/ask and updated response payload)
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt: userPromptBubble.textContent })
+                body: JSON.stringify({ question: userPromptBubble.textContent })
             });
             const data = await response.json();
             
             // 💬 Server ka message screen par set karna
-            aiProcessingBubble.textContent = data.response;
+            aiProcessingBubble.textContent = data.answer;
 
             
             
