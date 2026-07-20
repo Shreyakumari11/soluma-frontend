@@ -11,18 +11,21 @@ class SolumaRuntimeEngine {
 
     async bootstrapApplication() {
         try {
-            // Load component into layout frame view
             const response = await fetch('components/navbar.html');
-            if (!response.ok) throw new Error("Navbar payload component unresolved.");
-            const content = await response.text();
-            document.getElementById('navbar-container').innerHTML = content;
+            if (response.ok) {
+                const content = await response.text();
+                const navContainer = document.getElementById('navbar-container');
+                if(navContainer) navContainer.innerHTML = content;
+            }
             
             this.bindCoreNavbarInteractions();
             this.syncStateDisplays();
         } catch (error) {
-            console.error("Layout engine instantiation crash sequence:", error);
+            console.warn("Navbar loading skipped, proceeding with base UI:", error);
+            // Crashing se bachne ke liye sirf console.warn rakha hai
         }
     }
+    
 
     bindCoreNavbarInteractions() {
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -64,11 +67,7 @@ class SolumaRuntimeEngine {
 
         try {
             // 🔄 Real Backend API Call (Updated)
-<<<<<<< HEAD
-            const response = await fetch('https://soluma-backend-project.onrender.com/api/chat', {
-=======
             const response = await fetch('https://soluma-backend.onrender.com/api/ask', {
->>>>>>> dbd3d66 (Fixed API endpoint to /api/ask and updated response payload)
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question: userPromptBubble.textContent })
